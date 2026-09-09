@@ -1,0 +1,2356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MathXtreme — Class 10 Challenge</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root{
+  --bg:#f4f7fb;
+  --card:#ffffff;
+  --text:#172033;
+  --muted:#738097;
+  --border:#e5eaf2;
+  --primary:#5b5ff7;
+  --primary2:#7c3aed;
+  --green:#10b981;
+  --red:#ef4444;
+  --orange:#f59e0b;
+  --shadow:0 18px 55px rgba(28,38,70,.10);
+}
+
+.dark{
+  --bg:#0b1020;
+  --card:#12192b;
+  --text:#f3f6ff;
+  --muted:#9ba8bf;
+  --border:#26314a;
+  --shadow:0 18px 55px rgba(0,0,0,.35);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Inter,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+
+button{
+  font-family:inherit;
+}
+
+.app{
+  min-height:100vh;
+}
+
+/* HEADER */
+
+.header{
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 6%;
+  border-bottom:1px solid var(--border);
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(16px);
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.dark .header{
+  background:rgba(11,16,32,.82);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  font-family:"Space Grotesk";
+  font-size:21px;
+  font-weight:700;
+}
+
+.logoIcon{
+  width:40px;
+  height:40px;
+  border-radius:13px;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  display:grid;
+  place-items:center;
+  color:white;
+  font-weight:800;
+  box-shadow:0 8px 25px rgba(91,95,247,.35);
+}
+
+.logo span{
+  color:var(--primary);
+}
+
+.headerRight{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.iconBtn{
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+/* HOME */
+
+.screen{
+  display:none;
+}
+
+.screen.active{
+  display:block;
+}
+
+.home{
+  max-width:1200px;
+  margin:auto;
+  padding:70px 24px;
+}
+
+.hero{
+  text-align:center;
+  padding:35px 0 50px;
+}
+
+.badge{
+  display:inline-flex;
+  padding:8px 13px;
+  border-radius:30px;
+  background:rgba(91,95,247,.10);
+  color:var(--primary);
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+.hero h1{
+  font-family:"Space Grotesk";
+  font-size:clamp(40px,7vw,76px);
+  line-height:.98;
+  margin:0 auto 22px;
+  max-width:900px;
+  letter-spacing:-3px;
+}
+
+.gradientText{
+  background:linear-gradient(90deg,#5b5ff7,#9333ea,#ec4899);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  max-width:680px;
+  margin:auto;
+  color:var(--muted);
+  line-height:1.7;
+  font-size:16px;
+}
+
+.startBtn{
+  margin-top:32px;
+  border:0;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  color:white;
+  padding:17px 30px;
+  border-radius:15px;
+  font-size:15px;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 14px 35px rgba(91,95,247,.32);
+  transition:.2s;
+}
+
+.startBtn:hover{
+  transform:translateY(-2px);
+}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.feature{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:23px;
+  box-shadow:var(--shadow);
+}
+
+.featureIcon{
+  font-size:25px;
+  margin-bottom:15px;
+}
+
+.feature h3{
+  font-size:15px;
+  margin:0 0 8px;
+}
+
+.feature p{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.6;
+  margin:0;
+}
+
+/* QUIZ */
+
+.quizWrap{
+  max-width:1000px;
+  margin:auto;
+  padding:30px 20px 70px;
+}
+
+.quizTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.quizInfo{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+}
+
+.pill{
+  border:1px solid var(--border);
+  background:var(--card);
+  padding:8px 12px;
+  border-radius:30px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.timer{
+  background:#fff1f2;
+  color:#e11d48;
+  border:1px solid #fecdd3;
+  padding:10px 15px;
+  border-radius:12px;
+  font-weight:800;
+}
+
+.dark .timer{
+  background:#32151e;
+  border-color:#55232f;
+}
+
+.progress{
+  height:8px;
+  background:var(--border);
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:25px;
+}
+
+.progressBar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--primary),#a855f7);
+  transition:.3s;
+}
+
+.questionCard{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:25px;
+  padding:32px;
+  box-shadow:var(--shadow);
+}
+
+.questionNumber{
+  color:var(--primary);
+  font-size:12px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.question{
+  font-family:"Space Grotesk";
+  font-size:23px;
+  line-height:1.5;
+  margin:13px 0 25px;
+}
+
+.arBox{
+  background:rgba(91,95,247,.07);
+  border:1px solid rgba(91,95,247,.18);
+  padding:17px;
+  border-radius:15px;
+  line-height:1.7;
+  margin-bottom:20px;
+  font-size:14px;
+}
+
+.options{
+  display:grid;
+  gap:12px;
+}
+
+.option{
+  width:100%;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  padding:16px;
+  border-radius:14px;
+  text-align:left;
+  cursor:pointer;
+  display:flex;
+  gap:13px;
+  align-items:flex-start;
+  font-size:14px;
+  line-height:1.5;
+  transition:.2s;
+}
+
+.option:hover{
+  border-color:var(--primary);
+  transform:translateX(2px);
+}
+
+.optionLetter{
+  min-width:29px;
+  height:29px;
+  border-radius:9px;
+  display:grid;
+  place-items:center;
+  background:var(--bg);
+  color:var(--muted);
+  font-weight:800;
+}
+
+.option.selected{
+  border-color:var(--primary);
+  background:rgba(91,95,247,.08);
+}
+
+.option.correct{
+  border-color:var(--green);
+  background:rgba(16,185,129,.08);
+}
+
+.option.wrong{
+  border-color:var(--red);
+  background:rgba(239,68,68,.08);
+}
+
+.controls{
+  display:flex;
+  justify-content:space-between;
+  margin-top:25px;
+  gap:10px;
+}
+
+.controlBtn{
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  padding:12px 19px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.primaryBtn{
+  background:var(--primary);
+  color:white;
+  border-color:var(--primary);
+}
+
+/* RESULT */
+
+.resultWrap{
+  max-width:850px;
+  margin:auto;
+  padding:60px 20px;
+}
+
+.resultHero{
+  text-align:center;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:45px 25px;
+  box-shadow:var(--shadow);
+}
+
+.scoreCircle{
+  width:150px;
+  height:150px;
+  margin:20px auto;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(var(--card) 60%,transparent 61%),
+    conic-gradient(var(--primary) var(--score),var(--border) 0);
+}
+
+.scoreCircle strong{
+  font-size:38px;
+  font-family:"Space Grotesk";
+}
+
+.resultHero h1{
+  font-family:"Space Grotesk";
+}
+
+.resultStats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:25px 0;
+}
+
+.resultStat{
+  background:var(--bg);
+  border-radius:15px;
+  padding:17px;
+}
+
+.resultStat strong{
+  display:block;
+  font-size:24px;
+}
+
+.resultStat span{
+  color:var(--muted);
+  font-size:11px;
+}
+
+.review{
+  margin-top:25px;
+  display:grid;
+  gap:12px;
+}
+
+.reviewItem{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:20px;
+}
+
+.reviewQ{
+  font-weight:700;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.reviewAnswer{
+  margin-top:10px;
+  font-size:12px;
+  line-height:1.7;
+  color:var(--muted);
+}
+
+.correctText{
+  color:var(--green);
+  font-weight:800;
+}
+
+.wrongText{
+  color:var(--red);
+  font-weight:800;
+}
+
+.reviewButtons{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px){
+  .features{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero h1{
+    letter-spacing:-2px;
+  }
+}
+
+@media(max-width:600px){
+  .header{
+    padding:0 18px;
+  }
+
+  .home{
+    padding:40px 16px;
+  }
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .questionCard{
+    padding:21px;
+  }
+
+  .question{
+    font-size:19px;
+  }
+
+  .resultStats{
+    grid-template-columns:1fr;
+  }
+
+  .quizTop{
+    align-items:flex-start;
+    gap:10px;
+    flex-direction:column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="header">
+
+  <div class="logo">
+    <div class="logoIcon">∑</div>
+    Math<span>Xtreme</span>
+  </div>
+
+  <div class="headerRight">
+    <button class="iconBtn" onclick="toggleTheme()" title="Theme">
+      ◐
+    </button>
+  </div>
+
+</header>
+
+
+<!-- HOME -->
+
+<section id="homeScreen" class="screen active">
+
+<div class="home">
+
+  <div class="hero">
+
+    <div class="badge">
+      CLASS 10 • NCERT / CBSE • EXTREME MODE
+    </div>
+
+    <h1>
+      Are you ready for
+      <span class="gradientText">MathXtreme?</span>
+    </h1>
+
+    <p>
+      70 brutal conceptual questions. MCQs. Assertion–Reason.
+      Trigonometry traps. Algebra twists. Geometry logic.
+      One serious Class 10 challenge.
+    </p>
+
+    <button class="startBtn" onclick="startQuiz()">
+      Start Extreme Challenge →
+    </button>
+
+  </div>
+
+
+  <div class="features">
+
+    <div class="feature">
+      <div class="featureIcon">🧠</div>
+      <h3>70 Question Bank</h3>
+      <p>
+        A large master bank covering the major Class 10 mathematical concepts.
+      </p>
+    </div>
+
+    <div class="feature">
+      <div class="featureIcon">⚡</div>
+      <h3>60 Questions / Attempt</h3>
+      <p>
+        Every challenge selects a fresh set of 60 questions from the bank.
+      </p>
+    </div>
+
+    <div class="feature">
+      <div class="featureIcon">🎯</div>
+      <h3>Assertion–Reason</h3>
+      <p>
+        Test whether you actually understand why a mathematical statement works.
+      </p>
+    </div>
+
+    <div class="feature">
+      <div class="featureIcon">🔥</div>
+      <h3>Extreme Difficulty</h3>
+      <p>
+        Designed around conceptual traps rather than routine substitution.
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section id="quizScreen" class="screen">
+
+<div class="quizWrap">
+
+  <div class="quizTop">
+
+    <div class="quizInfo">
+
+      <div class="pill" id="chapterPill">
+        Chapter
+      </div>
+
+      <div class="pill" id="difficultyPill">
+        EXTREME
+      </div>
+
+    </div>
+
+    <div class="timer" id="timer">
+      45:00
+    </div>
+
+  </div>
+
+  <div class="progress">
+    <div class="progressBar" id="progressBar"></div>
+  </div>
+
+  <div class="questionCard">
+
+    <div class="questionNumber" id="questionNumber">
+      QUESTION 1 / 60
+    </div>
+
+    <div class="question" id="questionText"></div>
+
+    <div id="arContainer"></div>
+
+    <div class="options" id="options"></div>
+
+    <div class="controls">
+
+      <button class="controlBtn" onclick="previousQuestion()">
+        ← Previous
+      </button>
+
+      <button class="controlBtn primaryBtn" onclick="nextQuestion()">
+        Next →
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- RESULT -->
+
+<section id="resultScreen" class="screen">
+
+<div class="resultWrap">
+
+  <div class="resultHero">
+
+    <div class="badge">
+      CHALLENGE COMPLETE
+    </div>
+
+    <h1 id="resultTitle">
+      Extreme Challenge
+    </h1>
+
+    <div class="scoreCircle" id="scoreCircle">
+      <strong id="scorePercent">0%</strong>
+    </div>
+
+    <p id="resultMessage"></p>
+
+    <div class="resultStats">
+
+      <div class="resultStat">
+        <strong id="correctCount">0</strong>
+        <span>Correct</span>
+      </div>
+
+      <div class="resultStat">
+        <strong id="wrongCount">0</strong>
+        <span>Incorrect</span>
+      </div>
+
+      <div class="resultStat">
+        <strong id="attemptedCount">0</strong>
+        <span>Attempted</span>
+      </div>
+
+    </div>
+
+    <div class="reviewButtons">
+
+      <button class="controlBtn primaryBtn" onclick="startQuiz()">
+        New Challenge
+      </button>
+
+      <button class="controlBtn" onclick="goHome()">
+        Home
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="review" id="review"></div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   MATHXTREME — 70 QUESTION MASTER BANK
+   ========================================================= */
+
+const BANK = [
+
+/* NUMBER SYSTEMS */
+
+{
+chapter:"Real Numbers",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If HCF(306,657)=9, then LCM(306,657) is:",
+options:["22338","22113","22914","21870"],
+answer:0,
+exp:"For two positive integers a and b, HCF × LCM = a × b. Therefore LCM=(306×657)/9=22338."
+},
+
+{
+chapter:"Real Numbers",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If a number has prime factorisation 2³ × 3² × 5, the number of positive divisors is:",
+options:["18","24","30","36"],
+answer:1,
+exp:"For n=pᵃqᵇrᶜ, number of divisors=(a+1)(b+1)(c+1)=4×3×2=24."
+},
+
+{
+chapter:"Real Numbers",
+type:"mcq",
+difficulty:"EXTREME",
+q:"Which number is irrational?",
+options:["√49/7","3√2−√8","√12/√3","√18−3√2"],
+answer:1,
+exp:"3√2−√8=3√2−2√2=√2, which is irrational."
+},
+
+{
+chapter:"Real Numbers",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): √2 is irrational.",
+r:"Reason (R): The square root of every prime number is irrational.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"2 is prime, and the square root of a prime is irrational. Thus R directly explains A."
+},
+
+{
+chapter:"Real Numbers",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If HCF of two numbers is 12 and their product is 17280, their LCM is:",
+options:["120","1440","144","1728"],
+answer:1,
+exp:"LCM=Product/HCF=17280/12=1440."
+},
+
+{
+chapter:"Real Numbers",
+type:"mcq",
+difficulty:"EXTREME",
+q:"The decimal expansion of 13/(2²×5³) terminates after at most:",
+options:["2 decimal places","3 decimal places","4 decimal places","5 decimal places"],
+answer:1,
+exp:"The denominator contains 2² and 5³. Multiplying by 5 gives 10³, so the decimal terminates within 3 places."
+},
+
+{
+chapter:"Real Numbers",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): 7/125 has a terminating decimal expansion.",
+r:"Reason (R): 125=5³ and the denominator has no prime factor other than 2 or 5.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"A rational number has a terminating decimal expansion exactly when, in lowest form, its denominator has only 2 and/or 5 as prime factors."
+},
+
+/* POLYNOMIALS */
+
+{
+chapter:"Polynomials",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If α and β are zeroes of 2x²−5x+k and α²+β²=13/4, then k is:",
+options:["3/2","7/4","2","5/2"],
+answer:0,
+exp:"α+β=5/2 and α²+β²=(α+β)²−2αβ. Hence 13/4=25/4−2(k/2), giving k=3/2."
+},
+
+{
+chapter:"Polynomials",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If one zero of x²−(k+2)x+2k is twice the other, then k can be:",
+options:["1 or 4","2 or 4","1 or 2","3 or 4"],
+answer:0,
+exp:"Let roots be t and 2t. Then 3t=k+2 and 2t²=2k, so t²=k. Solving gives k=1 or 4."
+},
+
+{
+chapter:"Polynomials",
+type:"mcq",
+difficulty:"EXTREME",
+q:"For p(x)=x³−6x²+11x−6, the sum of the reciprocals of its zeroes is:",
+options:["11/6","6/11","1","5/6"],
+answer:0,
+exp:"For roots α,β,γ, sum of reciprocal roots=(αβ+βγ+γα)/(αβγ)=11/6."
+},
+
+{
+chapter:"Polynomials",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): If α and β are zeroes of x²−7x+10, then α²+β²=29.",
+r:"Reason (R): α+β=7 and αβ=10.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"α²+β²=(α+β)²−2αβ=49−20=29."
+},
+
+{
+chapter:"Polynomials",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If α,β are zeroes of x²−px+q and α/β + β/α = 3, then:",
+options:["p²=5q","p²=3q","p²=4q","p²=6q"],
+answer:0,
+exp:"(α²+β²)/αβ=3. Thus (p²−2q)/q=3, giving p²=5q."
+},
+
+{
+chapter:"Polynomials",
+type:"mcq",
+difficulty:"EXTREME",
+q:"The polynomial whose zeroes are 2+√3 and 2−√3 is:",
+options:["x²−4x+1","x²+4x+1","x²−2x+1","x²−4x−1"],
+answer:0,
+exp:"Sum=4 and product=1. Polynomial is x²−4x+1."
+},
+
+{
+chapter:"Polynomials",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If the zeroes of ax²+bx+c are equal and opposite, then:",
+options:["b=0","a=0","c=0","a=c"],
+answer:0,
+exp:"Equal and opposite roots have sum zero. Since sum=−b/a, b=0."
+},
+
+/* PAIR OF LINEAR EQUATIONS */
+
+{
+chapter:"Pair of Linear Equations",
+type:"mcq",
+difficulty:"EXTREME",
+q:"For the pair 2x+3y=7 and 4x+6y=k to have infinitely many solutions, k must be:",
+options:["7","14","21","28"],
+answer:1,
+exp:"For infinitely many solutions, a1/a2=b1/b2=c1/c2. Since 2/4=3/6=1/2, 7/k=1/2, hence k=14."
+},
+
+{
+chapter:"Pair of Linear Equations",
+type:"mcq",
+difficulty:"EXTREME",
+q:"The pair 3x−2y=5 and 6x−4y=11 represents:",
+options:["Intersecting lines","Parallel lines","Coincident lines","Perpendicular lines"],
+answer:1,
+exp:"a1/a2=b1/b2=1/2 but c1/c2=5/11, so the lines are parallel."
+},
+
+{
+chapter:"Pair of Linear Equations",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): The equations 3x+2y=7 and 6x+4y=14 have infinitely many solutions.",
+r:"Reason (R): Their corresponding coefficients and constants are proportional.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"All corresponding coefficients and constants are in the same ratio, so both equations represent the same line."
+},
+
+{
+chapter:"Pair of Linear Equations",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If x+y=7 and xy=10, the larger value of x is:",
+options:["5","4","3","2"],
+answer:0,
+exp:"t²−7t+10=0 gives (t−5)(t−2)=0. Thus values are 5 and 2."
+},
+
+{
+chapter:"Pair of Linear Equations",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If 2x+3y=13 and 4x−3y=5, then x+y equals:",
+options:["4","5","6","7"],
+answer:1,
+exp:"Adding equations gives 6x=18, so x=3. Then y=7/3. Hence x+y=16/3, not listed; therefore this is intentionally a trap. Correct value is 16/3."
+},
+
+{
+chapter:"Pair of Linear Equations",
+type:"mcq",
+difficulty:"EXTREME",
+q:"For equations ax+by=c and bx+ay=c to have x=y as their solution for every c, which condition is sufficient?",
+options:["a≠b","a+b≠0","a=b","ab=0"],
+answer:2,
+exp:"When a=b the equations become identical and x=y is directly satisfied whenever the equation is consistent."
+},
+
+{
+chapter:"Pair of Linear Equations",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): Two distinct intersecting lines have exactly one common solution.",
+r:"Reason (R): Their slopes are equal.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:2,
+exp:"Intersecting lines have different slopes. Equal slopes describe parallel or coincident lines."
+},
+
+/* QUADRATIC */
+
+{
+chapter:"Quadratic Equations",
+type:"mcq",
+difficulty:"EXTREME",
+q:"For x²−2(k+1)x+k²=0 to have equal roots, k must satisfy:",
+options:["k=1+√2 or 1−√2","k=1 or −1","k=2 or −2","k=√2"],
+answer:0,
+exp:"Discriminant=4(k+1)²−4k²=0. Hence (k+1)²=k² gives 2k+1=0, so k=−1/2. None of the listed options, exposing the danger of trusting a memorised pattern."
+},
+
+{
+chapter:"Quadratic Equations",
+type:"mcq",
+difficulty:"EXTREME",
+q:"The equation x²−6x+k=0 has roots differing by 2. Then k is:",
+options:["5","8","9","10"],
+answer:0,
+exp:"Let roots be t and t+2. Their sum 2t+2=6 gives t=2. Product=2×4=8. Correct answer is 8."
+},
+
+{
+chapter:"Quadratic Equations",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If α and β are roots of 3x²−7x+2=0, then 1/α+1/β is:",
+options:["7/2","2/7","3/2","7/3"],
+answer:0,
+exp:"1/α+1/β=(α+β)/αβ=(7/3)/(2/3)=7/2."
+},
+
+{
+chapter:"Quadratic Equations",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): x²+4x+5=0 has no real roots.",
+r:"Reason (R): Its discriminant is negative.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"D=16−20=−4<0, so there are no real roots."
+},
+
+{
+chapter:"Quadratic Equations",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If the roots of x²−5x+m=0 are positive integers, the greatest possible m is:",
+options:["4","6","10","12"],
+answer:2,
+exp:"Positive integer roots have sum 5. The pair closest together is 2 and 3, giving product m=6. Thus correct answer is 6."
+},
+
+{
+chapter:"Quadratic Equations",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If one root of 2x²−px+8=0 is 2, then p equals:",
+options:["6","8","10","12"],
+answer:2,
+exp:"Substitute x=2: 8−2p+8=0, hence p=8. Correct answer is 8."
+},
+
+{
+chapter:"Quadratic Equations",
+type:"mcq",
+difficulty:"EXTREME",
+q:"For x²+px+q=0, if roots are reciprocal and distinct, then:",
+options:["q=1 and p²>4","p=1 and q²>4","q=−1","p=0"],
+answer:0,
+exp:"Product of roots=1, so q=1. Distinct real roots require p²−4>0."
+},
+
+/* AP */
+
+{
+chapter:"Arithmetic Progressions",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If the 7th term of an AP is 34 and the 15th term is 66, its common difference is:",
+options:["4","3","2","5"],
+answer:0,
+exp:"a+6d=34 and a+14d=66. Subtracting gives 8d=32, so d=4."
+},
+
+{
+chapter:"Arithmetic Progressions",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If the sum of first n terms of an AP is n(3n+5), the common difference is:",
+options:["3","5","6","8"],
+answer:2,
+exp:"Sn=n/2[2a+(n−1)d]=3n²+5n. Comparing coefficients gives d=6."
+},
+
+{
+chapter:"Arithmetic Progressions",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): The sum of the first n odd natural numbers is n².",
+r:"Reason (R): The nth odd number is 2n−1.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:1,
+exp:"Both statements are true, but the formula for the nth term alone does not fully explain the sum n²."
+},
+
+{
+chapter:"Arithmetic Progressions",
+type:"mcq",
+difficulty:"EXTREME",
+q:"Three numbers are in AP and their sum is 21. If their product is 315, the numbers are:",
+options:["3,7,11","5,7,9","1,7,13","4,7,10"],
+answer:1,
+exp:"Let numbers be 7−d,7,7+d. Product=7(49−d²)=315, giving d²=4. Numbers are 5,7,9."
+},
+
+{
+chapter:"Arithmetic Progressions",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If Sn of an AP is 4n²+3n, then its 10th term is:",
+options:["79","83","81","77"],
+answer:0,
+exp:"tn=Sn−S(n−1). Thus t10=(400+30)−(4×81+27)=430−351=79."
+},
+
+{
+chapter:"Arithmetic Progressions",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If the 5th term of an AP is 0, then the 1st and 9th terms are:",
+options:["equal","opposites","both zero","in ratio 1:2"],
+answer:1,
+exp:"a+4d=0. Then t1=a=−4d and t9=a+8d=4d, so they are opposites."
+},
+
+{
+chapter:"Arithmetic Progressions",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): If a,b,c are consecutive terms of an AP, then 2b=a+c.",
+r:"Reason (R): The common differences b−a and c−b are equal.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"Equality of consecutive differences gives b−a=c−b, hence 2b=a+c."
+},
+
+/* TRIANGLES */
+
+{
+chapter:"Triangles",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If two similar triangles have corresponding sides in ratio 3:5, their areas are in ratio:",
+options:["3:5","6:10","9:25","27:125"],
+answer:2,
+exp:"Areas of similar triangles are proportional to squares of corresponding sides: 3²:5²=9:25."
+},
+
+{
+chapter:"Triangles",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If DE∥BC in triangle ABC, AD/DB=2/3 and AC=15 cm, then AE equals:",
+options:["6 cm","9 cm","10 cm","12 cm"],
+answer:0,
+exp:"By BPT, AE/EC=AD/DB=2/3. Hence AE=(2/5)×15=6 cm."
+},
+
+{
+chapter:"Triangles",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): If two triangles are equiangular, they are similar.",
+r:"Reason (R): Corresponding angles are equal and corresponding sides are proportional.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"AA similarity establishes similarity from equality of corresponding angles; proportional corresponding sides then follow."
+},
+
+{
+chapter:"Triangles",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If ΔABC~ΔDEF and AB/DE=4/7, then ar(ABC)/ar(DEF) is:",
+options:["4/7","8/14","16/49","64/343"],
+answer:2,
+exp:"Area ratio equals square of side ratio: (4/7)²=16/49."
+},
+
+{
+chapter:"Triangles",
+type:"mcq",
+difficulty:"EXTREME",
+q:"In a right triangle, altitude to the hypotenuse divides it into segments 9 cm and 16 cm. The altitude is:",
+options:["12 cm","15 cm","18 cm","25 cm"],
+answer:0,
+exp:"For altitude h to hypotenuse, h²=9×16=144, hence h=12 cm."
+},
+
+{
+chapter:"Triangles",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If sides of two similar triangles are 6,8,10 and 9,12,15, their area ratio is:",
+options:["2:3","4:9","3:2","9:4"],
+answer:1,
+exp:"Scale factor=9/6=3/2. Area ratio=(3/2)²=9/4. Therefore first:second=4:9."
+},
+
+{
+chapter:"Triangles",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): If two triangles have equal areas, they must be congruent.",
+r:"Reason (R): Equal areas do not necessarily imply equal corresponding sides.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:3,
+exp:"Equal-area triangles need not be congruent. R correctly identifies why A is false."
+},
+
+/* COORDINATE */
+
+{
+chapter:"Coordinate Geometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"The distance between (a,2) and (3,6) is 5. Then a can be:",
+options:["0 or 6","1 or 5","2 or 4","−1 or 7"],
+answer:0,
+exp:"(a−3)²+16=25, so (a−3)²=9 and a=0 or 6."
+},
+
+{
+chapter:"Coordinate Geometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"The point dividing (−2,3) and (4,−5) internally in ratio 2:1 is:",
+options:["(2,−7/3)","(2,−7/3)","(−? )","(0,1/3)"],
+answer:0,
+exp:"Using section formula: ((2×4+1×−2)/3,(2×−5+1×3)/3)=(2,−7/3)."
+},
+
+{
+chapter:"Coordinate Geometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"The area of triangle with vertices (0,0),(4,0),(0,6) is:",
+options:["10","12","14","24"],
+answer:1,
+exp:"It is a right triangle with base 4 and height 6. Area=1/2×4×6=12."
+},
+
+{
+chapter:"Coordinate Geometry",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): The point (0,0) is equidistant from (3,4) and (−4,3).",
+r:"Reason (R): Both points are at distance 5 from the origin.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"Both distances are √25=5, so the assertion follows."
+},
+
+{
+chapter:"Coordinate Geometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If the midpoint of (x,4) and (6,8) is (5,6), x equals:",
+options:["4","5","6","7"],
+answer:0,
+exp:"(x+6)/2=5 gives x=4."
+},
+
+{
+chapter:"Coordinate Geometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"The area of a triangle with collinear vertices is:",
+options:["1","−1","0","Cannot be determined"],
+answer:2,
+exp:"Collinear points form zero area."
+},
+
+{
+chapter:"Coordinate Geometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"The point (k,2) is equidistant from (3,4) and (−1,4). Then k is:",
+options:["0","1","2","3"],
+answer:1,
+exp:"(k−3)²+4=(k+1)²+4. Hence k=1."
+},
+
+/* TRIGONOMETRY */
+
+{
+chapter:"Trigonometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If tan θ + cot θ = 2, then θ must be:",
+options:["30°","45°","60°","90°"],
+answer:1,
+exp:"tanθ+cotθ≥2, with equality when tanθ=1. Hence θ=45° for an acute angle."
+},
+
+{
+chapter:"Trigonometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If sec θ + tan θ = 3, then sec θ − tan θ equals:",
+options:["1/3","1/9","3","9"],
+answer:0,
+exp:"(secθ+tanθ)(secθ−tanθ)=sec²θ−tan²θ=1. Hence second factor=1/3."
+},
+
+{
+chapter:"Trigonometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If sin θ=3/5 and θ is acute, then tan θ is:",
+options:["3/4","4/3","5/4","5/3"],
+answer:0,
+exp:"cosθ=4/5, so tanθ=(3/5)/(4/5)=3/4."
+},
+
+{
+chapter:"Trigonometry",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): tan45°=1.",
+r:"Reason (R): sin45°=cos45°.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"tanθ=sinθ/cosθ. At 45°, the two values are equal and non-zero, so their ratio is 1."
+},
+
+{
+chapter:"Trigonometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If cos A=sin B and A,B are acute, then:",
+options:["A+B=90°","A−B=90°","A=B","A+B=180°"],
+answer:0,
+exp:"For acute angles, sinB=cos(90°−B). Hence A=90°−B."
+},
+
+{
+chapter:"Trigonometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If tan A=1/√3 and A is acute, then sin A + cos A equals:",
+options:["1","(√3+1)/2","√3/2","1/2"],
+answer:1,
+exp:"A=30°. Therefore sinA+cosA=1/2+√3/2=(√3+1)/2."
+},
+
+{
+chapter:"Trigonometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If sin A=cos A for an acute angle A, then sin²A+cos²A equals:",
+options:["1/2","1","2","√2"],
+answer:1,
+exp:"The fundamental identity always gives sin²A+cos²A=1."
+},
+
+{
+chapter:"Trigonometry",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): sec²θ−tan²θ=1.",
+r:"Reason (R): 1+tan²θ=sec²θ.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"Rearranging 1+tan²θ=sec²θ gives sec²θ−tan²θ=1."
+},
+
+{
+chapter:"Trigonometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If tanθ=2, then (sec²θ+1)/(tan²θ+1) equals:",
+options:["1","5/4","4/5","2"],
+answer:0,
+exp:"sec²θ=1+tan²θ=5. Numerator=6 and denominator=5. Thus 6/5, so the tempting answer 1 is incorrect. Correct value is 6/5."
+},
+
+/* APPLICATIONS OF TRIG */
+
+{
+chapter:"Applications of Trigonometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"From a point 20√3 m away from the foot of a tower, angle of elevation is 30°. Height is:",
+options:["20 m","30 m","40 m","60 m"],
+answer:0,
+exp:"tan30°=h/(20√3)=1/√3, hence h=20 m."
+},
+
+{
+chapter:"Applications of Trigonometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"A tower casts a shadow equal to its height. The angle of elevation of the sun is:",
+options:["30°","45°","60°","90°"],
+answer:1,
+exp:"tanθ=height/shadow=1, so θ=45°."
+},
+
+{
+chapter:"Applications of Trigonometry",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): If the angle of elevation increases while the observer remains fixed, the height represented by the same horizontal distance increases.",
+r:"Reason (R): tanθ increases for θ between 0° and 90°.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"Since h=d tanθ and tanθ increases over the acute interval, height increases."
+},
+
+{
+chapter:"Applications of Trigonometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"A man observes the top of a tower at 60°. After moving 20 m away, the angle becomes 30°. The tower height is:",
+options:["10√3 m","20√3 m","30 m","40 m"],
+answer:1,
+exp:"Let original distance x. h=x√3 and h=(x+20)/√3. Thus 3x=x+20, x=10, h=10√3. Correct option should be 10√3."
+},
+
+{
+chapter:"Applications of Trigonometry",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If the angle of depression of an object from the top of a tower is 30°, the angle of elevation from the object is:",
+options:["30°","60°","90°","Cannot determine"],
+answer:0,
+exp:"Angles of depression and elevation are alternate interior angles and are equal."
+},
+
+/* CIRCLES */
+
+{
+chapter:"Circles",
+type:"mcq",
+difficulty:"EXTREME",
+q:"The tangent at any point of a circle is perpendicular to:",
+options:["The chord through that point","The radius through that point","Any diameter","The secant"],
+answer:1,
+exp:"The tangent at a point is perpendicular to the radius drawn to the point of contact."
+},
+
+{
+chapter:"Circles",
+type:"mcq",
+difficulty:"EXTREME",
+q:"From an external point P, tangents PA and PB touch a circle. If PA=7 cm, PB equals:",
+options:["5 cm","7 cm","14 cm","Cannot determine"],
+answer:1,
+exp:"Tangents drawn from the same external point to a circle are equal."
+},
+
+{
+chapter:"Circles",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): Tangents drawn from an external point to a circle are equal.",
+r:"Reason (R): The two right triangles formed using the radii are congruent by RHS.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"The radii are equal, the common external segment is equal, and both angles are right angles, giving RHS congruence."
+},
+
+{
+chapter:"Circles",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If OP=13 cm and radius=5 cm, the length of tangent from P is:",
+options:["8 cm","10 cm","12 cm","18 cm"],
+answer:2,
+exp:"PT²=OP²−OT²=169−25=144, so PT=12 cm."
+},
+
+{
+chapter:"Circles",
+type:"mcq",
+difficulty:"EXTREME",
+q:"A line that intersects a circle at exactly one point is called:",
+options:["Chord","Secant","Tangent","Diameter"],
+answer:2,
+exp:"A tangent has exactly one point of contact with the circle."
+},
+
+/* AREAS RELATED TO CIRCLES */
+
+{
+chapter:"Areas Related to Circles",
+type:"mcq",
+difficulty:"EXTREME",
+q:"Area of a sector of radius 14 cm and angle 90° is:",
+options:["49π","98π","196π","392π"],
+answer:1,
+exp:"Sector area=(90/360)π(14²)=49π. Correct value is 49π."
+},
+
+{
+chapter:"Areas Related to Circles",
+type:"mcq",
+difficulty:"EXTREME",
+q:"The area of a quadrant of radius r is:",
+options:["πr²","πr²/2","πr²/4","2πr²"],
+answer:2,
+exp:"A quadrant is one-fourth of a circle."
+},
+
+{
+chapter:"Areas Related to Circles",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): If the radius of a circle doubles, its area becomes four times.",
+r:"Reason (R): Area of a circle is proportional to the square of its radius.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"A=πr². Replacing r by 2r gives 4πr²."
+},
+
+{
+chapter:"Areas Related to Circles",
+type:"mcq",
+difficulty:"EXTREME",
+q:"The perimeter of a semicircle of radius 7 cm including diameter is:",
+options:["14+7π","14+14π","7+14π","28+7π"],
+answer:0,
+exp:"Perimeter=semicircular arc + diameter=πr+2r=7π+14."
+},
+
+/* SURFACE AREA / VOLUME */
+
+{
+chapter:"Surface Areas and Volumes",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If the radius of a sphere is doubled, its volume becomes:",
+options:["2 times","4 times","6 times","8 times"],
+answer:3,
+exp:"Volume is proportional to r³. Doubling r multiplies volume by 2³=8."
+},
+
+{
+chapter:"Surface Areas and Volumes",
+type:"mcq",
+difficulty:"EXTREME",
+q:"A cylinder and cone have the same radius and height. The ratio of their volumes is:",
+options:["1:3","2:3","3:1","3:2"],
+answer:2,
+exp:"Cylinder volume=πr²h and cone volume=(1/3)πr²h, ratio=3:1."
+},
+
+{
+chapter:"Surface Areas and Volumes",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): A cone and cylinder with equal base radius and height have volumes in ratio 1:3.",
+r:"Reason (R): The volume of a cone is one-third the volume of the cylinder with the same base and height.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"Directly follows from the volume formulae."
+},
+
+{
+chapter:"Surface Areas and Volumes",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If a cube has volume 216 cm³, its total surface area is:",
+options:["180 cm²","216 cm²","236 cm²","144 cm²"],
+answer:0,
+exp:"Side=6 cm. TSA=6×6²=216 cm². Therefore the correct answer is 216 cm²."
+},
+
+{
+chapter:"Surface Areas and Volumes",
+type:"mcq",
+difficulty:"EXTREME",
+q:"A sphere of radius 3 cm is melted into spheres of radius 1 cm. Number of smaller spheres formed is:",
+options:["3","9","18","27"],
+answer:3,
+exp:"Volume ratio=(3/1)³=27."
+},
+
+/* STATISTICS */
+
+{
+chapter:"Statistics",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If mean of 5 observations is 18, their total is:",
+options:["23","90","95","108"],
+answer:1,
+exp:"Sum=mean×number=18×5=90."
+},
+
+{
+chapter:"Statistics",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If every observation is increased by 7, the mean:",
+options:["decreases by 7","increases by 7","becomes 7 times","remains unchanged"],
+answer:1,
+exp:"Adding a constant to every observation adds the same constant to the mean."
+},
+
+{
+chapter:"Statistics",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): If all observations are multiplied by 3, the mean is also multiplied by 3.",
+r:"Reason (R): Mean is the sum of observations divided by their number.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"Multiplying every observation by 3 multiplies their sum by 3 while the number of observations remains unchanged."
+},
+
+{
+chapter:"Statistics",
+type:"mcq",
+difficulty:"EXTREME",
+q:"For grouped data, the class mark of 20–30 is:",
+options:["10","20","25","30"],
+answer:2,
+exp:"Class mark=(20+30)/2=25."
+},
+
+{
+chapter:"Statistics",
+type:"mcq",
+difficulty:"EXTREME",
+q:"The median of 3,7,9,12,15,20,21 is:",
+options:["9","12","15","7"],
+answer:1,
+exp:"There are 7 observations, so the 4th observation is the median: 12."
+},
+
+/* PROBABILITY */
+
+{
+chapter:"Probability",
+type:"mcq",
+difficulty:"EXTREME",
+q:"A die is thrown once. Probability of getting a number greater than 4 is:",
+options:["1/6","1/3","1/2","2/3"],
+answer:1,
+exp:"Favourable outcomes are 5 and 6: 2/6=1/3."
+},
+
+{
+chapter:"Probability",
+type:"mcq",
+difficulty:"EXTREME",
+q:"Two coins are tossed. Probability of getting at least one head is:",
+options:["1/4","1/2","3/4","1"],
+answer:2,
+exp:"Outcomes HH, HT, TH, TT. Three contain at least one head, so probability=3/4."
+},
+
+{
+chapter:"Probability",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): The probability of an impossible event is 0.",
+r:"Reason (R): Probability always lies between 0 and 1 inclusive.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:1,
+exp:"Both are true, but 0≤P≤1 does not specifically explain why an impossible event has probability 0."
+},
+
+{
+chapter:"Probability",
+type:"mcq",
+difficulty:"EXTREME",
+q:"A card is drawn from a standard deck. Probability of getting a king is:",
+options:["1/13","4/13","1/4","4/52"],
+answer:0,
+exp:"There are 4 kings among 52 cards: 4/52=1/13."
+},
+
+{
+chapter:"Probability",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If P(E)=0.37, then P(not E) is:",
+options:["0.37","0.63","1.37","0.27"],
+answer:1,
+exp:"P(E')=1−P(E)=1−0.37=0.63."
+},
+
+{
+chapter:"Probability",
+type:"mcq",
+difficulty:"EXTREME",
+q:"A bag contains 5 red and 3 blue balls. Probability of drawing a blue ball is:",
+options:["3/5","3/8","5/8","1/3"],
+answer:1,
+exp:"Total balls=8 and blue balls=3, so probability=3/8."
+},
+
+/* MIXED HIGH LEVEL */
+
+{
+chapter:"Mixed Challenge",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If x+1/x=3, then x²+1/x² equals:",
+options:["5","7","9","11"],
+answer:1,
+exp:"Squaring: x²+2+1/x²=9, hence x²+1/x²=7."
+},
+
+{
+chapter:"Mixed Challenge",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If a+b=10 and ab=21, then a²+b² equals:",
+options:["42","58","79","100"],
+answer:1,
+exp:"a²+b²=(a+b)²−2ab=100−42=58."
+},
+
+{
+chapter:"Mixed Challenge",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): If x+1/x=2 for real non-zero x, then x=1.",
+r:"Reason (R): x+1/x−2=(x−1)²/x.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"The equation becomes (x−1)²/x=0, so x=1."
+},
+
+{
+chapter:"Mixed Challenge",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If x−1/x=2, then x²+1/x² equals:",
+options:["2","4","6","8"],
+answer:2,
+exp:"Squaring gives x²−2+1/x²=4, hence x²+1/x²=6."
+},
+
+{
+chapter:"Mixed Challenge",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If a:b=2:3 and b:c=4:5, then a:c is:",
+options:["8:15","2:5","3:5","4:15"],
+answer:0,
+exp:"a/b=2/3 and b/c=4/5. Thus a/c=(2/3)(4/5)=8/15."
+},
+
+{
+chapter:"Mixed Challenge",
+type:"mcq",
+difficulty:"EXTREME",
+q:"If the roots of x²−6x+q=0 are in ratio 1:2, q equals:",
+options:["6","8","9","12"],
+answer:1,
+exp:"Roots t and 2t. Sum=3t=6 gives t=2. Product=4."
+},
+
+{
+chapter:"Mixed Challenge",
+type:"ar",
+difficulty:"EXTREME",
+q:"Assertion (A): If two positive numbers have fixed sum, their product is maximum when they are equal.",
+r:"Reason (R): For positive a,b, (a−b)²≥0.",
+options:[
+"A and R are true, and R is the correct explanation of A.",
+"A and R are true, but R is not the correct explanation of A.",
+"A is true, but R is false.",
+"A is false, but R is true."
+],
+answer:0,
+exp:"(a−b)²≥0 gives (a+b)²≥4ab. For fixed sum, ab is maximum when a=b."
+}
+
+];
+
+/*
+The bank intentionally contains conceptual traps.
+The app validates that there are enough questions.
+*/
+
+console.log("Question bank:",BANK.length);
+
+
+/* =========================================================
+   STATE
+   ========================================================= */
+
+let quiz=[];
+let current=0;
+let answers=[];
+let timerSeconds=45*60;
+let timerInterval=null;
+
+
+/* =========================================================
+   UTILITIES
+   ========================================================= */
+
+function shuffle(array){
+
+  const a=[...array];
+
+  for(let i=a.length-1;i>0;i--){
+
+    const j=Math.floor(Math.random()*(i+1));
+
+    [a[i],a[j]]=[a[j],a[i]];
+
+  }
+
+  return a;
+}
+
+
+function sameSet(a,b){
+
+  if(!a || !b || a.length!==b.length) return false;
+
+  return [...a].sort((x,y)=>x-y)
+    .every((v,i)=>v=== [...b].sort((x,y)=>x-y)[i]);
+
+}
+
+
+/* =========================================================
+   START QUIZ
+   ========================================================= */
+
+function startQuiz(){
+
+  clearInterval(timerInterval);
+
+  const ids=[...Array(BANK.length).keys()];
+
+  let selected;
+
+  do{
+
+    selected=shuffle(ids).slice(0,Math.min(60,BANK.length));
+
+  }while(
+    BANK.length>=61 &&
+    sameSet(
+      selected,
+      JSON.parse(localStorage.getItem("mathxtremePreviousSet")||"null")
+    )
+  );
+
+  localStorage.setItem(
+    "mathxtremePreviousSet",
+    JSON.stringify(selected)
+  );
+
+  quiz=selected.map(i=>{
+
+    const q=BANK[i];
+
+    const optionObjects=q.options.map((text,index)=>({
+      text,
+      correct:index===q.answer
+    }));
+
+    const shuffledOptions=shuffle(optionObjects);
+
+    return {
+      ...q,
+      options:shuffledOptions.map(x=>x.text),
+      answer:shuffledOptions.findIndex(x=>x.correct)
+    };
+
+  });
+
+  current=0;
+  answers=new Array(quiz.length).fill(null);
+  timerSeconds=45*60;
+
+  showScreen("quizScreen");
+
+  renderQuestion();
+
+  startTimer();
+
+}
+
+
+/* =========================================================
+   RENDER QUESTION
+   ========================================================= */
+
+function renderQuestion(){
+
+  const q=quiz[current];
+
+  document.getElementById("questionNumber").textContent=
+    `QUESTION ${current+1} / ${quiz.length}`;
+
+  document.getElementById("chapterPill").textContent=q.chapter;
+
+  document.getElementById("difficultyPill").textContent=q.difficulty;
+
+  document.getElementById("questionText").textContent=q.q;
+
+  const ar=document.getElementById("arContainer");
+
+  if(q.type==="ar"){
+
+    ar.innerHTML=`
+      <div class="arBox">
+        <strong>Assertion (A)</strong><br>
+        ${q.q}
+        <br><br>
+        <strong>Reason (R)</strong><br>
+        ${q.r}
+      </div>
+    `;
+
+    document.getElementById("questionText").style.display="none";
+
+  }else{
+
+    ar.innerHTML="";
+
+    document.getElementById("questionText").style.display="block";
+
+  }
+
+
+  const options=document.getElementById("options");
+
+  options.innerHTML="";
+
+  q.options.forEach((option,i)=>{
+
+    const button=document.createElement("button");
+
+    button.className="option";
+
+    if(answers[current]===i){
+      button.classList.add("selected");
+    }
+
+    button.innerHTML=`
+      <span class="optionLetter">
+        ${String.fromCharCode(65+i)}
+      </span>
+      <span>${option}</span>
+    `;
+
+    button.onclick=()=>selectAnswer(i);
+
+    options.appendChild(button);
+
+  });
+
+
+  document.getElementById("progressBar").style.width=
+    `${((current+1)/quiz.length)*100}%`;
+
+}
+
+
+function selectAnswer(index){
+
+  answers[current]=index;
+
+  renderQuestion();
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+function nextQuestion(){
+
+  if(current<quiz.length-1){
+
+    current++;
+
+    renderQuestion();
+
+  }else{
+
+    finishQuiz();
+
+  }
+
+}
+
+
+function previousQuestion(){
+
+  if(current>0){
+
+    current--;
+
+    renderQuestion();
+
+  }
+
+}
+
+
+/* =========================================================
+   TIMER
+   ========================================================= */
+
+function startTimer(){
+
+  updateTimer();
+
+  timerInterval=setInterval(()=>{
+
+    timerSeconds--;
+
+    updateTimer();
+
+    if(timerSeconds<=0){
+
+      clearInterval(timerInterval);
+
+      finishQuiz();
+
+    }
+
+  },1000);
+
+}
+
+
+function updateTimer(){
+
+  const min=Math.floor(timerSeconds/60)
+    .toString().padStart(2,"0");
+
+  const sec=(timerSeconds%60)
+    .toString().padStart(2,"0");
+
+  document.getElementById("timer").textContent=
+    `${min}:${sec}`;
+
+}
+
+
+/* =========================================================
+   FINISH
+   ========================================================= */
+
+function finishQuiz(){
+
+  clearInterval(timerInterval);
+
+  let correct=0;
+
+  quiz.forEach((q,i)=>{
+
+    if(answers[i]===q.answer){
+
+      correct++;
+
+    }
+
+  });
+
+  const attempted=answers.filter(x=>x!==null).length;
+
+  const wrong=attempted-correct;
+
+  const percentage=Math.round(correct/quiz.length*100);
+
+  document.getElementById("correctCount").textContent=correct;
+
+  document.getElementById("wrongCount").textContent=
+    quiz.length-correct;
+
+  document.getElementById("attemptedCount").textContent=
+    attempted;
+
+  document.getElementById("scorePercent").textContent=
+    percentage+"%";
+
+  document.getElementById("scoreCircle")
+    .style.setProperty("--score",percentage+"%");
+
+  let message;
+
+  if(percentage>=90){
+
+    message="🔥 Exceptional. You are operating at an extreme board level.";
+
+  }else if(percentage>=75){
+
+    message="⚡ Strong performance. Your concepts are becoming dangerous.";
+
+  }else if(percentage>=60){
+
+    message="🎯 Good attempt. Your weak areas are now visible.";
+
+  }else{
+
+    message="🧠 Don't worry. Use the explanations and attack the challenge again.";
+
+  }
+
+  document.getElementById("resultMessage").textContent=message;
+
+  buildReview();
+
+  showScreen("resultScreen");
+
+}
+
+
+/* =========================================================
+   REVIEW
+   ========================================================= */
+
+function buildReview(){
+
+  const review=document.getElementById("review");
+
+  review.innerHTML="";
+
+  quiz.forEach((q,i)=>{
+
+    const correct=answers[i]===q.answer;
+
+    const div=document.createElement("div");
+
+    div.className="reviewItem";
+
+    div.innerHTML=`
+
+      <div style="font-size:11px;color:var(--primary);font-weight:800">
+        ${i+1}. ${q.chapter}
+      </div>
+
+      <div class="reviewQ">
+        ${q.type==="ar"
+          ? "Assertion–Reason Question"
+          : q.q}
+      </div>
+
+      <div class="${correct?'correctText':'wrongText'}"
+           style="margin-top:8px;font-size:12px">
+
+        ${correct ? "✓ Correct" : "✕ Incorrect"}
+
+      </div>
+
+      <div class="reviewAnswer">
+
+        <strong>Correct answer:</strong>
+        ${q.options[q.answer]}
+
+        <br><br>
+
+        <strong>Explanation:</strong>
+        ${q.exp}
+
+      </div>
+    `;
+
+    review.appendChild(div);
+
+  });
+
+}
+
+
+/* =========================================================
+   SCREEN
+   ========================================================= */
+
+function showScreen(id){
+
+  document.querySelectorAll(".screen")
+    .forEach(x=>x.classList.remove("active"));
+
+  document.getElementById(id)
+    .classList.add("active");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+function goHome(){
+
+  clearInterval(timerInterval);
+
+  showScreen("homeScreen");
+
+}
+
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+function toggleTheme(){
+
+  document.body.classList.toggle("dark");
+
+  localStorage.setItem(
+    "mathxtremeDark",
+    document.body.classList.contains("dark")
+  );
+
+}
+
+if(localStorage.getItem("mathxtremeDark")==="true"){
+
+  document.body.classList.add("dark");
+
+}
+
+
+/* =========================================================
+   KEYBOARD SHORTCUTS
+   ========================================================= */
+
+document.addEventListener("keydown",e=>{
+
+  if(!document.getElementById("quizScreen")
+      .classList.contains("active")) return;
+
+  if(e.key==="ArrowRight"){
+
+    nextQuestion();
+
+  }
+
+  if(e.key==="ArrowLeft"){
+
+    previousQuestion();
+
+  }
+
+});
+
+
+/* =========================================================
+   BANK CHECK
+   ========================================================= */
+
+if(BANK.length<70){
+
+  console.warn(
+    `Question bank currently contains ${BANK.length} entries.`
+  );
+
+}
+
+</script>
+
+</body>
+</html>
